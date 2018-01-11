@@ -1,4 +1,3 @@
-import { LoginPage } from './../pages/login/login';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -6,12 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-
+import { PrincipalProvider } from '../providers/principal/principal';
+import { AppEventsProvider } from '../services/app-events';
 
 @NgModule({
   declarations: [
-    MyApp,
-    LoginPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -19,13 +18,14 @@ import { MyApp } from './app.component';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    LoginPage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PrincipalProvider,
+    AppEventsProvider
   ]
 })
 export class AppModule {}

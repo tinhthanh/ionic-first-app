@@ -1,0 +1,55 @@
+<ion-navbar *navbar>
+  <ion-title>Profile</ion-title>
+</ion-navbar>
+
+<ion-content class="login" >
+  <ion-segment [(ngModel)]="authType" color="primary">
+    <ion-segment-button value="login">
+      Log In
+    </ion-segment-button>
+    <ion-segment-button value="signup">
+      Sign Up
+    </ion-segment-button>
+  </ion-segment>
+  <img src="https://cdnhtml5hive.azureedge.net/wp-content/uploads/2017/09/angular-logo.png">
+<div [ngSwitch]="authType" >
+  <form *ngSwitchCase="'login'" #signForm="ngForm" (ngSubmit)="authenticate(signForm.value)">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" name="username" ngModel></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" name="password" ngModel></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button block type="submit">Log In</button>
+    </div>
+  </form>
+
+  <form  *ngSwitchCase="'signup'"  #signForm="ngForm" (ngSubmit)="authenticate(signForm.value)">
+      <ion-item>
+          <ion-label>Full name</ion-label>
+          <ion-input type="text" name="name" ngModel></ion-input>
+        </ion-item>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" name="username" ngModel></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" name="password" ngModel></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Confirm Pass</ion-label>
+      <ion-input type="password" name="cpassword" ngModel></ion-input>
+    </ion-item>
+    <div padding>
+      <button block type="submit">signup</button>
+    </div>
+  </form>
+  </div>
+</ion-content>
